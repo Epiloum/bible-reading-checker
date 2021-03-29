@@ -7,6 +7,7 @@ use App\Models\User;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Http\{RedirectResponse, Request, Response};
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\User as SocialUser;
@@ -76,7 +77,7 @@ class SocialController extends Controller
         $user = new User;
         $user->name = $socialUser->getName();
         $user->email = $socialUser->getEmail();
-        $user->email_verified_at = Date::now();
+        $user->email_verified_at = $user->freshTimestamp();
         $user->remember_token = Str::random(60);
         $user->save();
 
