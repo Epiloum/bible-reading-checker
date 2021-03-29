@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('social/kakao');
 });
+
+Route::get('/social/{provider}', [
+    'as' => 'social.login',
+    'uses' => 'App\Http\Controllers\Auth\SocialController@execute',
+]);
