@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('social/kakao');
+    return view('index');
 });
 
 Route::get('/social/{provider}', [
