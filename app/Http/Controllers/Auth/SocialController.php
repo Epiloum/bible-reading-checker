@@ -8,12 +8,15 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\{RedirectResponse, Request, Response};
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\User as SocialUser;
 
 class SocialController extends Controller
 {
+    use AuthenticatesUsers;
+
     /**
      * 주어진 provider에 대하여 소셜 응답을 처리합니다.
      *
