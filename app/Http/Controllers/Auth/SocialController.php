@@ -53,7 +53,7 @@ class SocialController extends Controller
      */
     protected function handleProviderCallback(Request $request, string $provider)
     {
-        $socialUser = Socialite::driver($provider)->user();
+        $socialUser = Socialite::driver($provider)->stateless()->user();
 
         if ($user = User::where('email', $socialUser->getEmail())->first()) {
             $this->guard()->login($user, true);
