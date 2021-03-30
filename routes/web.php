@@ -25,6 +25,8 @@ Route::get('social/{provider}', [
     'uses' => 'App\Http\Controllers\Auth\SocialController@execute',
 ]);
 
+Route::redirect('home', 'app/reading');
+
 // App
 Route::middleware('auth')->prefix('app')->group(function () {
     // Entrance
