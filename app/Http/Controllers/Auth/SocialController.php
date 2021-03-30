@@ -83,6 +83,7 @@ class SocialController extends Controller
     protected function register(Request $request, SocialUser $socialUser)
     {
         $user = new User;
+        $user->kakao_id = $socialUser->getRaw()['id'];
         $user->name = $socialUser->getName();
         $user->email = $socialUser->getEmail();
         $user->email_verified_at = $user->freshTimestamp();
