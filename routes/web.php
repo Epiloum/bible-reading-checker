@@ -27,7 +27,7 @@ Route::get('/social/{provider}', [
 // App
 Route::prefix('app')->middleware('auth')->group(function () {
     // Entrance
-    Route::redirect('/', 'reading')->name('auth.welcome');
+    Route::redirect('/', 'reading');
 
     // Bible Reading Table
     Route::get('reading', function () {
