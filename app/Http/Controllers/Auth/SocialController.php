@@ -57,14 +57,9 @@ class SocialController extends Controller
      */
     protected function handleProviderCallback(Request $request, string $provider)
     {
-        try {
-            $socialUser = Socialite::driver($provider)->stateless()->user();
-        } catch(GuzzleHttp\Exception\ClientException $e)
-        {
-            return $this->handleProviderCallback($request, $provider);
-        }
+        $socialUser = Socialite::driver($provider)->user();
 
-        if ($user = User::where('email', $socialUser->getEmail())->first()) {
+        if ($user = User::where('kakao_id', $socialUser->getRaw()['id'])->first()) {
             $this->guard()->login($user, true);
 
             return $this->sendLoginResponse($request);
