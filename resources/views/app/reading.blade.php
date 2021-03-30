@@ -30,6 +30,22 @@
                     @endfor
                 </td>
             </tr>
+            <tr>
+                <th>민수기</th>
+                <td>
+                    @for ($i = 1; $i <= 36; $i++)
+                        <button>{{ $i }}</button>
+                    @endfor
+                </td>
+            </tr>
+            <tr>
+                <th>신명기</th>
+                <td>
+                    @for ($i = 1; $i <= 34; $i++)
+                        <button>{{ $i }}</button>
+                    @endfor
+                </td>
+            </tr>
         </table>
     </section>
 @endsection

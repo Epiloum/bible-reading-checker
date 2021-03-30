@@ -12,6 +12,10 @@ body {
     text-align: center;
 }
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 52px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
     background-color: #fff;
@@ -25,11 +29,11 @@ header h1 {
     letter-spacing: -0.05em;
 }
 main {
-    margin: 35px 16px;
+    margin: 68px 16px 16px 16px;
     text-align: left;
 }
 main section {
-    padding: 24px 16px;
+    padding: 16px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
     border-radius: 14px;
     background-color: #fff;
