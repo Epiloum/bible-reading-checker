@@ -13,11 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Index
 Route::get('/', function () {
     return view('index');
 });
 
+// Social Login
 Route::get('/social/{provider}', [
     'as' => 'social.login',
     'uses' => 'App\Http\Controllers\Auth\SocialController@execute',
 ]);
+
+// App
+Route::prefix('app')->middleware('auth')->group(function () {
+    // Entrance
+    Route::redirect('/', 'reading')->name('auth.welcome');
+
+    // Bible Reading Table
+    Route::get('reading', function () {
+        return 'TEST';
+    });
+});
