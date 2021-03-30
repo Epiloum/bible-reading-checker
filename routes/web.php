@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Index
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 // Social Login
 Route::get('/social/{provider}', [
@@ -25,9 +25,9 @@ Route::get('/social/{provider}', [
 ]);
 
 // App
-Route::prefix('app')->middleware('auth')->group(function () {
+Route::middleware('auth')->prefix('app')->group(function () {
     // Entrance
-    Route::redirect('/', 'reading');
+    Route::redirect('/', 'app/reading');
 
     // Bible Reading Table
     Route::get('reading', function () {
