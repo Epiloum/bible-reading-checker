@@ -26,18 +26,7 @@ Route::get('social/{provider}', [
 ]);
 
 // App
-/*
 Route::middleware('auth')->prefix('app')->group(function () {
-    // Entrance
-    Route::redirect('/', 'app/reading');
-
-    // Bible Reading Table
-    Route::get('reading', function () {
-        return 'TEST';
-    });
-});
-*/
-Route::prefix('app')->group(function () {
     // Entrance
     Route::redirect('/', 'app/reading');
 
