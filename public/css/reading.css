@@ -1,0 +1,31 @@
+main table {
+    border: 0;
+    table-layout: fixed;
+}
+main table th {
+    width: 80px;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+main table td {
+    font-size: 0;
+}
+main table td button {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #fff;
+    color: #888;
+    font-size: 11px;
+}
+main table td button.readed {
+    border-color: #f36a6a;
+    background-color: #f36a6a;
+    color: #fff;
+}
