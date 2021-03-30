@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GeneralController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,15 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Index
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', [GeneralController::class, 'index'])->name('index');
 
 // Social Login
-Route::get('/social/{provider}', [
+Route::get('social/{provider}', [
     'as' => 'social.login',
     'uses' => 'App\Http\Controllers\Auth\SocialController@execute',
 ]);
+
+Route::get('social/req', [GeneralController::class, 'reqLogin'])->name('social.request');
 
 // App
 Route::middleware('auth')->prefix('app')->group(function () {
