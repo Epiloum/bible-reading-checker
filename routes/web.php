@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\ReadingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,5 @@ Route::middleware('auth')->prefix('app')->group(function () {
     Route::redirect('/', 'app/reading');
 
     // Bible Reading Table
-    Route::get('reading', function () {
-        return view('app/reading');
-    });
+    Route::get('reading', [ReadingController::class, 'index']);
 });
