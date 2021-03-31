@@ -35,7 +35,35 @@ main table td button {
     font-size: 11px;
 }
 main table td button.readed {
-    border-color: #f36a6a;
-    background-color: #f36a6a;
     color: #fff;
 }
+main table button.readed {
+    border-color: #f36a6a;
+    background-color: #f36a6a;
+}
+/*
+main table tr:nth-of-type(6n+1) button.readed {
+    border-color: #f36a6a;
+    background-color: #f36a6a;
+}
+main table tr:nth-of-type(6n+2) button.readed {
+    border-color: #ff8833;
+    background-color: #ff8833;
+}
+main table tr:nth-of-type(6n+3) button.readed {
+    border-color: #ffc40f;
+    background-color: #ffc40f;
+}
+main table tr:nth-of-type(6n+4) button.readed {
+    border-color: #44cc88;
+    background-color: #44cc88;
+}
+main table tr:nth-of-type(6n+5) button.readed {
+    border-color: #44aaee;
+    background-color: #44aaee;
+}
+main table tr:nth-of-type(6n+6) button.readed {
+    border-color: #cc77dd;
+    background-color: #cc77dd;
+}
+*/
