@@ -6,12 +6,12 @@
 @section('contents')
     <section>
         <table>
-            @foreach ($books as $book)
-                <tr id="book{{ $book->id }}">
-                    <th>{{ $book->title }}</th>
+            @foreach ($books['구약'] as $id => $title)
+                <tr id="book{{ $id }}">
+                    <th>{{ $title }}</th>
                     <td>
-                        @foreach ($book->chapters as $chapter)
-                            <button @if($chapter->chapter <= 2) class="readed" @endif >{{ $chapter->chapter }}</button>
+                        @foreach ($chapters[$id] as $chapter => $chk_read)
+                            <button @if($chk_read) class="readed" @endif >{{ $chapter }}</button>
                         @endforeach
                     </td>
                 </tr>

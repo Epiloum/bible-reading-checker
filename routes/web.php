@@ -29,7 +29,16 @@ Route::get('social/{provider}', [
 Route::redirect('home', 'app/reading');
 
 // App
+/*
 Route::middleware('auth')->prefix('app')->group(function () {
+    // Entrance
+    Route::redirect('/', 'app/reading');
+
+    // Bible Reading Table
+    Route::get('reading', [ReadingController::class, 'index']);
+});
+*/
+Route::prefix('app')->group(function () {
     // Entrance
     Route::redirect('/', 'app/reading');
 
