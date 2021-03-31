@@ -7,7 +7,7 @@
     <section>
         <table>
             @foreach ($books as $book)
-                <tr>
+                <tr id="book{{ $book->id }}">
                     <th>{{ $book->title }}</th>
                     <td>
                         @foreach ($book->chapters as $chapter)

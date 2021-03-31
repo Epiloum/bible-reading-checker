@@ -1,23 +1,33 @@
 main table {
     border: 0;
     table-layout: fixed;
+    border-collapse: collapse;
 }
 main table th {
-    width: 80px;
+    width: 90px;
+    padding-top: 14px;
     font-size: 13px;
     font-weight: normal;
     text-align: left;
     vertical-align: top;
 }
 main table td {
+    padding-top: 12px;
+    padding-bottom: 6px;
     font-size: 0;
+}
+main table th, main table td {
+    border-bottom: 1px solid #eee;
+}
+main table tr:first-child th, main table tr:first-child td {
+    padding-top: 0;
 }
 main table td button {
     display: inline-block;
     width: 24px;
     height: 24px;
-    margin-right: 8px;
-    margin-bottom: 8px;
+    margin-right: 6px;
+    margin-bottom: 6px;
     border: 1px solid #ddd;
     border-radius: 12px;
     background-color: #fff;
