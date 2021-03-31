@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+// change from auth:api to auth:web for sharing auth
+Route::middleware('auth:web')->get('/user', function (Request $request) {
     return $request->user();
 });
