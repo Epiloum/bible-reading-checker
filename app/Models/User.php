@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Chapter')->withTimestamps();
     }
+
+    public function reads()
+    {
+        return $this->hasMany('App\Models\Read');
+    }
 }

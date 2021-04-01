@@ -20,4 +20,9 @@ class Chapter extends Model
     {
         return $this->belongsToMany('App\Models\User')->withTimestamps();
     }
+
+    public function reads()
+    {
+        return $this->hasMany('App\Models\Read');
+    }
 }

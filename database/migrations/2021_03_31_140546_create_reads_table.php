@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChapterUserTable extends Migration
+class CreateReadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateChapterUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('chapter_user', function (Blueprint $table) {
+        Schema::create('reads', function (Blueprint $table) {
             $table->id();
             $table->foreignId('chapter_id');
             $table->foreignId('user_id');
@@ -32,6 +32,6 @@ class CreateChapterUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chapter_user');
+        Schema::dropIfExists('reads');
     }
 }
