@@ -107,11 +107,13 @@ main section {
     margin-top: 12px;
     padding: 9px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
     box-sizing: border-box;
     color: #333;
     font-size: 13px;
     letter-spacing: -0.05em;
+    -webkit-appearance: none;
+    -webkit-border-radius: 4px;
 }
 #layerSettings form input[type=text]::placeholder {
     color: #bbb;
@@ -122,11 +124,13 @@ main section {
     margin-top: 24px;
     padding: 10px;
     border: 0;
-    border-radius: 3px;
+    border-radius: 4px;
     background-color: #27AE60;
     color: #fff;
     font-size: 13px;
     font-weight: bold;
+    -webkit-appearance: none;
+    -webkit-border-radius: 4px;
 }
 @keyframes fadein {
     from {
