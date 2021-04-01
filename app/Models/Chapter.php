@@ -16,11 +16,6 @@ class Chapter extends Model
         return $this->belongsTo('App\Models\Book');
     }
 
-    public function users()
-    {
-        return $this->belongsToMany('App\Models\User')->withTimestamps();
-    }
-
     public function reads()
     {
         return $this->hasMany('App\Models\Read');

@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Read extends Model
 {
-    protected $table = 'chapter_user';
-
     public function chapter()
     {
         return $this->belongsTo('App\Models\Chapter');

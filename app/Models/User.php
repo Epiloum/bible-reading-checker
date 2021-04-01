@@ -41,11 +41,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function chapters()
-    {
-        return $this->belongsToMany('App\Models\Chapter')->withTimestamps();
-    }
-
     public function reads()
     {
         return $this->hasMany('App\Models\Read');
