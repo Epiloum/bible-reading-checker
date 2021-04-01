@@ -37,3 +37,7 @@
         </table>
     </section>
 @endsection
+
+@section('layers')
+    @include('layers/settings')
+@endsection
