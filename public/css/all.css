@@ -33,6 +33,7 @@ main {
     text-align: left;
 }
 main section {
+    margin-bottom: 24px;
     padding: 16px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
     border-radius: 14px;
