@@ -26,10 +26,10 @@ class ReadingController extends Controller
         $res = DB::select(
             "
             SELECT
-                b.id, b.testament, b.title, c.chapter, IF(cu.id IS NULL, 0, 1) AS chk_read
+                b.id, b.testament, b.title, c.chapter, IF(r.id IS NULL, 0, 1) AS chk_read
             FROM `books` AS b
                 JOIN `chapters` AS c ON b.id = c.book_id
-                LEFT JOIN `chapter_user` AS cu ON c.id = cu.chapter_id AND cu.user_id = {$auth_user_id}
+                LEFT JOIN `reads` AS r ON c.id = r.chapter_id AND r.user_id = {$auth_user_id}
             ORDER BY b.id, c.id
         "
         );
