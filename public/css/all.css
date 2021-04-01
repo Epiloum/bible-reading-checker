@@ -8,7 +8,7 @@ html {
 body {
     height: 100%;
     background-color: #eee;
-    font-family: 'sans-serif', 'Malgun Gothic';
+    font-family: 'sans-serif', 'Tahoma', 'Helvetica', 'Helvetica Neue', 'Malgun Gothic';
     text-align: center;
 }
 header {
