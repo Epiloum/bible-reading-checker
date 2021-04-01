@@ -20,7 +20,7 @@ class ReadingController extends Controller
 
         $books = [];
         $chapters = [];
-        $auth_user_id = auth()->user()->id;
+        $auth_user_id = env('APP_ENV') == 'local'? 1: auth()->user()->id;
 
         $res = DB::select(
             "
