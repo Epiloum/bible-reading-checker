@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 //use App\Models\Book;
 
 class ReadingController extends Controller
@@ -20,7 +21,7 @@ class ReadingController extends Controller
 
         $books = [];
         $chapters = [];
-        $auth_user_id = env('APP_ENV') == 'local'? 1: auth()->user()->id;
+        $auth_user_id = env('APP_ENV') == 'local'? 1: Auth::user()->id;
 
         $res = DB::select(
             "
