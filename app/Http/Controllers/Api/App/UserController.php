@@ -54,7 +54,7 @@ class UserController extends Controller
      */
     public function update(int $kakao_id, Request $request)
     {
-        if ($kakao_id != $request->user()->id) {
+        if ($kakao_id != $request->user()->kakao_id) {
             return response('', 403);
         }
 
