@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
         xhr.open('PATCH', '/api/app/users/' + this.kid.value, true);
-        xhr.setRequestHeader('X-CSRF-TOKEN', apps.getCsrfToken());
+        xhr.setRequestHeader('X-CSRF-Token', apps.getCsrfToken());
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.send(body);
     })
 });
