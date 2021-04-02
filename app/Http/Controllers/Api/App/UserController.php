@@ -66,8 +66,9 @@ class UserController extends Controller
             'division' => 'required'
         ]);
 
-        $input = $request->all();
-        $user = $user->fill($input);
+        $user->name = $request->input('name');
+        $user->mobile = $request->input('mobile');
+        $user->division = $request->input('division');
         $user->save();
 
         return (new UserResource($user))->response();
