@@ -60,7 +60,7 @@ class UserController extends Controller
 
         $user = User::where('kakao_id', $kakao_id)->firstOrFail();
 
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required',
             'mobile' => 'required',
             'division' => 'required'
