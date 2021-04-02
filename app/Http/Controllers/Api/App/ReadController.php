@@ -19,6 +19,7 @@ class ReadController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -84,11 +85,12 @@ class ReadController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Read  $read
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Read $read)
+    public function destroy(int $id)
     {
-        //
+        $res = Read::find($id)->delete();
+        return response()->json(null, 204);
     }
 }

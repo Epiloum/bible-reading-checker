@@ -34,7 +34,7 @@ $routeApi = function () {
     Route::apiResource('users', UserController::class)->only(
         [
             'show',
-            'store'
+            'update'
         ]
     );
 };

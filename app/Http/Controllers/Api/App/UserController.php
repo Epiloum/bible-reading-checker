@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\App;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
@@ -31,12 +32,17 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(int $kakao_id, Request $request)
     {
-        //
+        if ($kakao_id != $request->user()->kakao_id) {
+            return response('', 403);
+        }
+
+        $user = User::where('kakao_id', $kakao_id)->firstOrFail();
+        return (new UserResource($user))->response();
     }
 
     /**
@@ -46,9 +52,26 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(int $kakao_id, Request $request)
     {
-        //
+        if ($kakao_id != $request->user()->id) {
+            return response('', 403);
+        }
+
+        $user = User::where('kakao_id', $kakao_id)->firstOrFail();
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'mobile' => 'required|numeric',
+            'division' => 'required'
+        ]);
+
+        $input = $request->all();
+        $user = $user->fill($input);
+        $user->save();
+
+        return (new UserResource($user))->response();
     }
 
     /**
