@@ -3,6 +3,11 @@ apps = {
     'forms': {}
 };
 
+// Functions
+apps.getCsrfToken = function () {
+    return document.getElementsByName('csrf-token')[0].getAttribute('content');
+};
+
 // Document Ready
 document.addEventListener('DOMContentLoaded', function () {
     // Apps object
@@ -14,9 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var layer = document.getElementById('layerSettings');
 
-        var body = 'division=' + this.division.value
-            + '&name=' + this.name.value
-            + '&mobile=' + this.mobile.value;
+        var body = 'division=' + encodeURIComponent(this.division.value) +
+            '&name=' + encodeURIComponent(this.name.value) +
+            '&mobile=' + encodeURIComponent(this.mobile.value) +
+            '&_token=' + encodeURIComponent(apps.getCsrfToken());
 
         var xhr = new XMLHttpRequest()
         xhr.onreadystatechange = function(){
@@ -32,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
         xhr.open('PATCH', '/api/app/users/' + this.kid.value, true);
+        xhr.setRequestHeader('X-CSRF-TOKEN', apps.getCsrfToken());
         xhr.send(body);
     })
 });

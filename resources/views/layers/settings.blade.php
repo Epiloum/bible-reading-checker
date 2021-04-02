@@ -16,6 +16,5 @@
         <div>
             <input type="submit" value="저장하기" />
         </div>
-        @csrf
     </form>
 </div>
