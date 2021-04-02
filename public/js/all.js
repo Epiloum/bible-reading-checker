@@ -14,10 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var layer = document.getElementById('layerSettings');
 
-        /*
-        var body = 'division=' + this.getElementsByName('division').value
-            + '&name=' + this.getElementsByName('name').value
-            + '&mobile=' + this.getElementsByName('mobile').value;
+        var body = 'division=' + this.division.value
+            + '&name=' + this.name.value
+            + '&mobile=' + this.mobile.value;
 
         var xhr = new XMLHttpRequest()
         xhr.onreadystatechange = function(){
@@ -32,11 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         };
-        xhr.open('POST', '/api/settings', true);
+        xhr.open('PATCH', '/api/app/users/' + this.kid.value, true);
         xhr.send(body);
-        */
-
-        alert('아직 만드는 중이어서 프로필은 저장되지 않아요!');
-        layer.style.display = 'none';
     })
 });

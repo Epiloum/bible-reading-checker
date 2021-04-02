@@ -39,6 +39,13 @@ class ReadingController extends Controller
             $chapters[$v->id][$v->chapter] = $v->chk_read;
         }
 
-        return view('app/reading', ['books' => $books, 'chapters' => $chapters]);
+        return view(
+            'app/reading',
+            [
+                'books' => $books,
+                'chapters' => $chapters,
+                'kakao_id' => auth()->user()->kakao_id
+            ]
+        );
     }
 }
