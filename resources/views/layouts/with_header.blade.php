@@ -15,6 +15,11 @@
 <body>
 <header>
     <h1>@yield('headline')</h1>
+    <div id="menu_left">
+    </div>
+    <div id="menu_right">
+        <button id="button_profile">프로필 수정</button>
+    </div>
 </header>
 <main>
     @section('contents')

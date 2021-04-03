@@ -18,6 +18,7 @@ class CreateReadsTable extends Migration
             $table->foreignId('chapter_id');
             $table->foreignId('user_id');
             $table->timestamps();
+            $table->softDeletes();
 
             //$table->index(['user_id', 'chapter_id']);
             $table->foreign('chapter_id')->references('id')->on('chapters');
