@@ -22,7 +22,7 @@
         header {
             overflow: hidden;
             min-height: 320px;
-            font-family: 'sans-serif', 'Malgun Gothic';
+            font-family: 'Malgun Gothic',  'Apple SD Gothic Neo', sans-serif;
             letter-spacing: -2px;
         }
         hgroup
@@ -49,7 +49,6 @@
             padding: 30px;
             color: #333;
             font-size: 12px;
-            font-family: serif, 'AppleMyungjo', 'Batang';
             text-align: center;
             line-height: 1.5em;
             letter-spacing: -0.05em;
@@ -69,6 +68,16 @@
             text-indent: -5000px;
         }
     </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NNV09EZZK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-0NNV09EZZK');
+    </script>
 </head>
 <body>
 <header>
@@ -79,8 +88,9 @@
 </header>
 <blockquote>
     그러므로 우리가 여호와를 알자 힘써 여호와를 알자<br />
-    그의 나타나심은 새벽 빛 같이 어김없나니 비와 같이,<br />
-    땅을 적시는 늦은 비와 같이 우리에게 임하시리라 하니라 (호세아 6:3)
+    그의 나타나심은 새벽 빛 같이 어김없나니<br />
+    비와 같이, 땅을 적시는 늦은 비와 같이<br />
+    우리에게 임하시리라 하니라 (호세아 6:3)
 </blockquote>
 <a href="/social/kakao">카카오로그인</a>
 </body>
