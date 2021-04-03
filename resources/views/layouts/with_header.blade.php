@@ -11,6 +11,16 @@
     <script src="/js/all.js" type="text/javascript"></script>
     <link href="/css/all.css" rel="stylesheet" />
     <link href="/css/reading.css" rel="stylesheet" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NNV09EZZK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-0NNV09EZZK');
+    </script>
 </head>
 <body>
 <header>
