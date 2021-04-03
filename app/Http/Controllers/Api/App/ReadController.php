@@ -9,13 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ReadController extends Controller
 {
-    protected $auth_id;
-
-    public function __construct()
-    {
-        $this->auth_id = env('APP_ENV') == 'local'? 1: Auth::user()->id;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +17,7 @@ class ReadController extends Controller
      */
     public function index(Request $request)
     {
-        $res = Read::where('user_id', $this->auth_id)->get();
+        $res = Read::where('user_id', $request->user()->id)->get();
 
         if ($request->book_id) {
             $res->filter(
@@ -57,7 +50,7 @@ class ReadController extends Controller
     public function show($id, Request $request)
     {
         $res = Read::with('chapter.book')
-            ->where('user_id', $this->auth_id)
+            ->where('user_id', $request->user()->id)
             ->where('id', $id)
             ->get();
 
