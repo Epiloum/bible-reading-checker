@@ -12,8 +12,8 @@
                 <tr id="book{{ $id }}">
                     <th>{{ $title }}</th>
                     <td>
-                        @foreach ($chapters[$id] as $chapter => $chk_read)
-                            <button @if($chk_read) class="readed" @endif >{{ $chapter }}</button>
+                        @foreach ($chapters[$id] as $chapter => $v)
+                            <button data-chapter="{{ $v['chapter_id'] }}" @if($v['chk_read']) data-read="y" @else data-read="n" @endif >{{ $chapter }}</button>
                         @endforeach
                     </td>
                 </tr>
@@ -28,8 +28,8 @@
                 <tr id="book{{ $id }}">
                     <th>{{ $title }}</th>
                     <td>
-                        @foreach ($chapters[$id] as $chapter => $chk_read)
-                            <button @if($chk_read) class="readed" @endif >{{ $chapter }}</button>
+                        @foreach ($chapters[$id] as $chapter => $v)
+                            <button data-chapter="{{ $v['chapter_id'] }}" @if($v['chk_read']) data-read="y" @else data-read="n" @endif >{{ $chapter }}</button>
                         @endforeach
                     </td>
                 </tr>

@@ -43,11 +43,20 @@ class ReadController extends Controller
            'chapter_id' => 'required'
         ]);
 
-        if ($read = Read::where('user_id', $request->user()->id)->get()) {
-            $read->save($request->all());
-        } else {
-            Read::create($request->all());
+        try {
+            $res = Read::create([
+                'user_id' => $request->user()->id,
+                'chapter_id' => $request->input('chapter_id')
+            ]);
+        } catch (\Illuminate\Database\QueryException $e) {
+            if (strpos($e->getMessage(), 'Duplicate entry') !== false) {
+                $res = response()->json(null, 409);
+            } else {
+                $res = response()->json(null, 500);
+            }
         }
+
+        return $res;
     }
 
     /**
@@ -89,17 +98,10 @@ class ReadController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    public function destroy(int $id, Request $request)
     {
-        $request->validate([
-            'chapter_id' => 'required'
-        ]);
-
-        $read = Read::where('user_id', $request->user()->id)
-            ->where('chapter_id', $request->input('chapter_id'))
-            ->firstdOrFail();
-        $read->delete();
-
-        return response()->json(null, 204);
+        return Read::where('user_id', $request->user()->id)
+            ->where('chapter_id', $id)
+            ->delete();
     }
 }

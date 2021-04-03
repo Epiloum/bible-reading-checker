@@ -26,17 +26,25 @@ class ReadingController extends Controller
         $res = DB::select(
             "
             SELECT
-                b.id, b.testament, b.title, c.chapter, IF(r.id IS NULL, 0, 1) AS chk_read
+                b.id,
+                b.testament,
+                b.title,
+                c.chapter,
+                c.id AS chapter_id,
+                IF(r.id IS NULL, 0, 1) AS chk_read
             FROM `books` AS b
                 JOIN `chapters` AS c ON b.id = c.book_id
-                LEFT JOIN `reads` AS r ON c.id = r.chapter_id AND r.user_id = {$auth_user_id}
+                LEFT JOIN `reads` AS r ON c.id = r.chapter_id AND r.user_id = {$auth_user_id} AND r.deleted_at IS NULL
             ORDER BY b.id, c.id
         "
         );
 
         foreach ($res as $v) {
             $books[$v->testament][$v->id] = $v->title;
-            $chapters[$v->id][$v->chapter] = $v->chk_read;
+            $chapters[$v->id][$v->chapter] = [
+                'chapter_id' => $v->chapter_id,
+                'chk_read' => $v->chk_read
+            ];
         }
 
         return view(
