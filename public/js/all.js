@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     // Event Handler: Checking Read it or not
-    Object.values(document.getElementsByTagName('button')).forEach(o => {
+    Object.values(document.getElementsByTagName('main')[0].getElementsByTagName('button')).forEach(o => {
         o.addEventListener('click', e => {
             e.preventDefault();
 
