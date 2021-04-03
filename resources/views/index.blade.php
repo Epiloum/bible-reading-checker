@@ -13,35 +13,53 @@
             height: 100%;
         }
         body {
-            height: 100%;
             background-image: url('/images/index.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center bottom;
             text-align: center;
         }
-        hgroup {
-            height: 75%;
-            min-height: 80px;
+        header {
+            overflow: hidden;
+            min-height: 320px;
             font-family: 'sans-serif', 'Malgun Gothic';
             letter-spacing: -2px;
         }
+        hgroup
+        {
+            width: 210px;
+            height: 210px;
+            margin: 16% auto;
+            background-color: rgba(0, 0, 0, .65);
+        }
         h1 {
-            padding-top: 20%;
-            color: #333;
-            font-size: 52px;
+            padding-top: 60px;
+            color: #eee;
+            font-size: 32px;
         }
         h2 {
             padding-top: 10px;
-            color: #666;
-            font-size: 30px;
+            color: #ddd;
+            font-size: 18px;
             font-weight: normal;
-
+        }
+        blockquote {
+            width: 260px;
+            margin: auto;
+            padding: 30px;
+            color: #333;
+            font-size: 12px;
+            font-family: serif, 'AppleMyungjo', 'Batang';
+            text-align: center;
+            line-height: 1.5em;
+            letter-spacing: -0.05em;
+            word-spacing: -0.1em;
         }
         a {
             display: inline-block;
             width: 183px;
             height: 43px;
+            margin-top: 50px;
             background-image: url('/images/kakao_login_large_narrow.png');
             background-size: 183px 43px;
             background-repeat: no-repeat;
@@ -53,10 +71,17 @@
     </style>
 </head>
 <body>
-<hgroup>
-    <h1>성경읽기표</h1>
-    <h2>대길교회 청년부</h2>
-</hgroup>
+<header>
+    <hgroup>
+        <h1>성경읽기표</h1>
+        <h2>대길교회 청년부</h2>
+    </hgroup>
+</header>
+<blockquote>
+    그러므로 우리가 여호와를 알자 힘써 여호와를 알자<br />
+    그의 나타나심은 새벽 빛 같이 어김없나니 비와 같이,<br />
+    땅을 적시는 늦은 비와 같이 우리에게 임하시리라 하니라 (호세아 6:3)
+</blockquote>
 <a href="/social/kakao">카카오로그인</a>
 </body>
 </html>
