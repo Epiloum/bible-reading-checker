@@ -1,7 +1,7 @@
 <div id="layerSettings">
     <form id="frmSettings">
         <h2>프로필 설정</h2>
-        <blockquote>소속과 이름, 휴대전화 번호를 작성해주세요! 입력해주신 내용은 매월 추첨으로 선물을 드릴 때 이용됩니다.</blockquote>
+        <blockquote>입력해주신 소속과 이름, 휴대전화 번호는 매월 추첨으로 선물을 드릴 때 이용합니다.</blockquote>
         <input type="hidden" name="kid" value="{{ $kakao_id ?? '' }}" />
         <ul>
             <li>

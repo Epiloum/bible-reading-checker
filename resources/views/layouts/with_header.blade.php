@@ -3,7 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="application-name" content="대길교회 성경읽기표"
+          data-csrf-token="{{ csrf_token() }}"
+          data-kakao-id="{{ $kakao_id }}"
+    />
     <title>@yield('title') - 대길교회 청년부</title>
     <script src="/js/all.js" type="text/javascript"></script>
     <link href="/css/all.css" rel="stylesheet" />
