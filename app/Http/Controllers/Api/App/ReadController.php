@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\App;
 use App\Http\Controllers\Controller;
 use App\Models\Read;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ReadController extends Controller
 {
@@ -17,7 +16,9 @@ class ReadController extends Controller
      */
     public function index(Request $request)
     {
-        $res = Read::where('user_id', $request->user()->id)->get();
+        $res = Read::select('chapter_id', 'created_at')
+            ->where('user_id', $request->user()->id)
+            ->get();
 
         if ($request->book_id) {
             $res->filter(
@@ -38,7 +39,15 @@ class ReadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+           'chapter_id' => 'required'
+        ]);
+
+        if ($read = Read::where('user_id', $request->user()->id)->get()) {
+            $read->save($request->all());
+        } else {
+            Read::create($request->all());
+        }
     }
 
     /**
@@ -72,7 +81,6 @@ class ReadController extends Controller
      */
     public function update(Request $request, Read $read)
     {
-        //
     }
 
     /**
@@ -83,7 +91,15 @@ class ReadController extends Controller
      */
     public function destroy(int $id)
     {
-        $res = Read::find($id)->delete();
+        $request->validate([
+            'chapter_id' => 'required'
+        ]);
+
+        $read = Read::where('user_id', $request->user()->id)
+            ->where('chapter_id', $request->input('chapter_id'))
+            ->firstdOrFail();
+        $read->delete();
+
         return response()->json(null, 204);
     }
 }
