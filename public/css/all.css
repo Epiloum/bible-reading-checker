@@ -163,6 +163,22 @@ main section {
     -webkit-appearance: none;
     -webkit-border-radius: 4px;
 }
+/* Toast Message UI */
+#toast_msg {
+    display: none;
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
+    transform: translate(-50%, 0);
+    padding: 4px 12px;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    animation-duration: 4s;
+    animation-name: toast;
+}
 @keyframes fadein {
     from {
         opacity: 0;
@@ -171,12 +187,33 @@ main section {
         opacity: 1;
     }
 }
-
 @keyframes fadeout {
     from {
         opacity: 1;
     }
     to {
         opacity: 0;
+    }
+}
+@keyframes toast {
+    from {
+        opacity: 0;
+        bottom: 10px;
+    }
+    15% {
+        opacity: 1;
+        bottom: 24px;
+    }
+    70% {
+        opacity: 1;
+        bottom: 24px;
+    }
+    85% {
+        opacity: 0;
+        bottom: 24px;
+    }
+    to {
+        opacity: 0;
+        bottom: 24px;
     }
 }

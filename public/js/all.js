@@ -5,6 +5,20 @@ apps = {
     'metadata' : document.getElementsByName('application-name')[0].dataset
 };
 
+// Methods
+apps.methods.toastMsg = function (msg) {
+    var elm = document.getElementById('toast_msg');
+    var cra = elm.cloneNode(true);
+    elm.parentNode.replaceChild(cra, elm);
+
+    cra.innerHTML = msg;
+    cra.style.display = 'inline-block';
+
+    setTimeout(function () {
+        cra.style.display = 'none';
+    }, 3500);
+};
+
 // Document Ready
 document.addEventListener('DOMContentLoaded', function () {
     // Apps object
@@ -25,12 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    alert('프로필이 저장되었습니다.');
+                    apps.methods.toastMsg('프로필이 저장되었습니다.');
                     layer.style.display = 'none';
-                } else if (xhr.status === 200) {
-                    alert('프로필은 빠진 항목 없이 입력해주세요.');
                 } else {
-                    alert('프로필 저장에 실패했습니다. 한 번 더 저장해주세요.');
+                    apps.methods.toastMsg('프로필 저장에 실패했습니다.<br />빠진 내용이 없나 한 번 더 확인해주세요.');
                 }
             }
         };
@@ -117,6 +129,4 @@ document.addEventListener('DOMContentLoaded', function () {
             xhr.send(body);
         });
     });
-
-
 });

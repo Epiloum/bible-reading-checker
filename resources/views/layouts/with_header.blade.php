@@ -37,5 +37,6 @@
 </main>
 @section('layers')
 @show
+<div id="toast_msg"></div>
 </body>
 </html>
