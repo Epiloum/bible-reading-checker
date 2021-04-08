@@ -94,9 +94,6 @@ nav.show {
 nav.show ~ header, nav.show ~ main {
     transform: translate(150px, 0);
 }
-nav.show ~ header #button_nav {
-    display: none;
-}
 nav dl dt, nav dl dd {
     height: 13px;
     border-bottom: 1px solid #222830;
