@@ -115,11 +115,12 @@ nav dl dd {
     text-indent: 4px;
 }
 main {
-    margin: 68px 16px 16px 16px;
+    margin: 16px;
+    padding: 54px 0 16px 0;
     text-align: left;
 }
 main section {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     padding: 16px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
     border-radius: 14px;
