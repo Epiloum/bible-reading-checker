@@ -223,7 +223,7 @@ main section {
     display: none;
     position: fixed;
     left: 50%;
-    bottom: 10px;
+    bottom: 20px;
     transform: translate(-50%, 0);
     padding: 4px 12px;
     border-radius: 12px;
@@ -254,15 +254,15 @@ main section {
 @keyframes toast {
     from {
         opacity: 0;
-        bottom: 10px;
+        bottom: 20px;
     }
     15% {
         opacity: 1;
-        bottom: 24px;
+        bottom: 34px;
     }
     70% {
         opacity: 1;
-        bottom: 24px;
+        bottom: 34px;
     }
     85% {
         opacity: 0;
@@ -270,6 +270,6 @@ main section {
     }
     to {
         opacity: 0;
-        bottom: 24px;
+        bottom: 34px;
     }
 }
