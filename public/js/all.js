@@ -6,7 +6,7 @@ apps = {
 };
 
 // Methods
-apps.methods.toastMsg = function (msg) {
+apps.methods.showToastMsg = function (msg) {
     var elm = document.getElementById('toast_msg');
     var cra = elm.cloneNode(true);
     elm.parentNode.replaceChild(cra, elm);
@@ -18,6 +18,11 @@ apps.methods.toastMsg = function (msg) {
         cra.style.display = 'none';
     }, 3500);
 };
+
+apps.methods.toggleNav = function () {
+    var o = document.getElementsByTagName('nav')[0];
+    o.className = (o.className == 'show')? '': 'show';
+}
 
 // Document Ready
 document.addEventListener('DOMContentLoaded', function () {
@@ -39,10 +44,10 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    apps.methods.toastMsg('프로필이 저장되었습니다.');
+                    apps.methods.showToastMsg('프로필이 저장되었습니다.');
                     layer.style.display = 'none';
                 } else {
-                    apps.methods.toastMsg('프로필 저장에 실패했습니다.<br />빠진 내용이 없나 한 번 더 확인해주세요.');
+                    apps.methods.showToastMsg('프로필 저장에 실패했습니다.<br />빠진 내용이 없나 한 번 더 확인해주세요.');
                 }
             }
         };
@@ -89,10 +94,30 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.send();
     })();
 
+    // Event Handler: Toggle Navigation UI
+    document.getElementById('button_nav').addEventListener('click', e => {
+        apps.methods.toggleNav();
+    });
+
+    // Event Handler: Shortcut on Navigation
+    (function () {
+        var els = document.querySelectorAll('nav dd');
+
+        for(var i=0; i<els.length; i++) {
+            let o = els[i];
+            o.addEventListener('click', e => {
+                document.getElementById(o.dataset['to']).scrollIntoView();
+                window.scrollBy(0, -1 * document.getElementsByTagName('header')[0].clientHeight);
+                apps.methods.toggleNav();
+                apps.methods.showToastMsg(o.innerText + ' 위치로 이동하였습니다.');
+            });
+        }
+    })();
+
     // Event Handler: Profile Setting
     document.getElementById('button_profile').addEventListener('click', e => {
         document.getElementById('layerSettings').style.display = 'block';
-    })
+    });
 
     // Event Handler: Checking Read it or not
     Object.values(document.getElementsByTagName('main')[0].getElementsByTagName('button')).forEach(o => {

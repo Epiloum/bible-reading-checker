@@ -37,6 +37,7 @@ header #menu_left {
     left: 0;
     bottom: 0;
     padding: 8px;
+    text-align: left;
 }
 header #menu_right {
     position: absolute;
@@ -46,6 +47,21 @@ header #menu_right {
     bottom: 0;
     padding: 10px;
     text-align: right;
+}
+header #button_nav {
+    overflow: hidden;
+    width: 32px;
+    height: 32px;
+    margin-left: 2px;
+    margin-top: 2px;
+    border: 0;
+    background-color: #fff;
+    background-image: url('/images/hamburger.png');
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    background-position: center center;
+    font-size: 0;
+    text-indent: -5000px;
 }
 header #button_profile {
     overflow: hidden;
@@ -60,12 +76,51 @@ header #button_profile {
     font-size: 0;
     text-indent: -5000px;
 }
+nav {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    bottom : 0;
+    width: 150px;
+    box-shadow: inset 2px 2px 6px rgb(0, 0, 0, .1);
+    background-color: #252c36;
+    font-size: 0;
+    z-index: 30;
+}
+nav.show {
+    display: block;
+}
+nav.show ~ header, nav.show ~ main {
+    transform: translate(150px, 0);
+}
+nav dl dt, nav dl dd {
+    height: 13px;
+    border-bottom: 1px solid #222830;
+    text-align: left;
+    line-height: 13px;
+}
+nav dl dt {
+    padding: 12px 10px;
+    background-color: #2d3748;
+    color: #f3f3ff;
+    font-size: 13px;
+    font-weight: normal;
+}
+nav dl dd {
+    padding: 10px 10px;
+    color: #ddddee;
+    font-size: 12px;
+    font-weight: lighter;
+    text-indent: 4px;
+}
 main {
-    margin: 68px 16px 16px 16px;
+    margin: 16px;
+    padding: 54px 0 16px 0;
     text-align: left;
 }
 main section {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     padding: 16px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
     border-radius: 14px;
@@ -168,7 +223,7 @@ main section {
     display: none;
     position: fixed;
     left: 50%;
-    bottom: 10px;
+    bottom: 20px;
     transform: translate(-50%, 0);
     padding: 4px 12px;
     border-radius: 12px;
@@ -178,6 +233,7 @@ main section {
     line-height: 16px;
     animation-duration: 4s;
     animation-name: toast;
+    z-index: 1000;
 }
 @keyframes fadein {
     from {
@@ -198,15 +254,15 @@ main section {
 @keyframes toast {
     from {
         opacity: 0;
-        bottom: 10px;
+        bottom: 20px;
     }
     15% {
         opacity: 1;
-        bottom: 24px;
+        bottom: 34px;
     }
     70% {
         opacity: 1;
-        bottom: 24px;
+        bottom: 34px;
     }
     85% {
         opacity: 0;
@@ -214,6 +270,6 @@ main section {
     }
     to {
         opacity: 0;
-        bottom: 24px;
+        bottom: 34px;
     }
 }
