@@ -178,6 +178,7 @@ main section {
     line-height: 16px;
     animation-duration: 4s;
     animation-name: toast;
+    z-index: 1000;
 }
 @keyframes fadein {
     from {
