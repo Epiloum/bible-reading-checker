@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById(o.dataset['to']).scrollIntoView();
                 window.scrollBy(0, -1 * document.getElementsByTagName('header')[0].clientHeight);
                 apps.methods.toggleNav();
+                apps.methods.showToastMsg(o.innerText + '(으)로 이동하였습니다.');
             });
         }
     })();
