@@ -3,6 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="description" content="2021년 성경 통독 함께해요!">
+	<meta property="og:title" content="성경읽기표 - 대길교회 청년부">
+	<meta property="og:description" content="2021년 성경 통독 함께해요!">
+	<meta property="og:image" content="http://{{ $_SERVER['SERVER_NAME'] }}/images/bible_og_image.jpg">
     <meta name="application-name" content="대길교회 성경읽기표"
           data-csrf-token="{{ csrf_token() }}"
           data-kakao-id="{{ $kakao_id }}"
