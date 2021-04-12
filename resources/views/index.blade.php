@@ -3,6 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="description" content="2021년 성경 통독 함께해요!">
+	<meta property="og:title" content="성경읽기표 - 대길교회 청년부">
+	<meta property="og:description" content="2021년 성경 통독 함께해요!">
+	<meta property="og:image" content="http://{{ $_SERVER['SERVER_NAME'] }}/images/og_image.png">
     <title>성경읽기표 - 대길교회 청년부</title>
     <style type="text/css">
         * {
