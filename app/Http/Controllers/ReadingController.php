@@ -52,7 +52,7 @@ class ReadingController extends Controller
             [
                 'books' => $books,
                 'chapters' => $chapters,
-                'kakao_id' => auth()->user()->kakao_id
+                'user_id' => auth()->user()->id,
             ]
         );
     }

@@ -9,7 +9,7 @@
 	<meta property="og:image" content="http://{{ $_SERVER['SERVER_NAME'] }}/images/og_image.png">
     <meta name="application-name" content="대길교회 성경읽기표"
           data-csrf-token="{{ csrf_token() }}"
-          data-kakao-id="{{ $kakao_id }}"
+          data-user-id="{{ $user_id }}"
     />
     <title>@yield('title') - 대길교회 청년부</title>
     <script src="/js/all.js" type="text/javascript"></script>

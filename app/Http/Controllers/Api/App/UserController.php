@@ -35,13 +35,13 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(int $kakao_id, Request $request)
+    public function show(int $user_id, Request $request)
     {
-        if ($kakao_id != $request->user()->kakao_id) {
+        if ($user_id != $request->user()->id) {
             return response('', 403);
         }
 
-        $user = User::where('kakao_id', $kakao_id)->firstOrFail();
+        $user = User::where('id', $user_id)->firstOrFail();
         return (new UserResource($user))->response();
     }
 
@@ -52,13 +52,13 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(int $kakao_id, Request $request)
+    public function update(int $user_id, Request $request)
     {
-        if ($kakao_id != $request->user()->kakao_id) {
+        if ($user_id != $request->user()->id) {
             return response('', 403);
         }
 
-        $user = User::where('kakao_id', $kakao_id)->firstOrFail();
+        $user = User::where('id', $user_id)->firstOrFail();
 
         $request->validate([
             'name' => 'required',

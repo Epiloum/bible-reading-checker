@@ -35,4 +35,10 @@ return [
         'client_secret' => env('KAKAO_CLIENT_SECRET'),
         'redirect' => env('KAKAO_REDIRECT_URI')
     ],
+
+    'naver' => [
+        'client_id' => env('NAVER_KEY'),
+        'client_secret' => env('NAVER_SECRET'),
+        'redirect' => env('NAVER_REDIRECT_URI'),
+    ],
 ];

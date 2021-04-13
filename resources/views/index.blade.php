@@ -58,18 +58,30 @@
             letter-spacing: -0.05em;
             word-spacing: -0.1em;
         }
-        a {
+        #socilites {
+            margin: 50px 40px;
+        }
+        #socilites a {
             display: inline-block;
-            width: 183px;
-            height: 43px;
-            margin-top: 50px;
-            background-image: url('/images/kakao_login_large_narrow.png');
-            background-size: 183px 43px;
+            margin: 6px 5px;
+            border-radius: 5px;
             background-repeat: no-repeat;
             box-shadow: 5px 5px 20px rgba(50, 20, 0, .7);
             overflow: hidden;
             font-size: 0;
             text-indent: -5000px;
+        }
+        #socilites a[href="/social/kakao"] {
+            width: 183px;
+            height: 43px;
+            background-image: url('/images/kakao_login_large_narrow.png');
+            background-size: 183px 43px;
+        }
+        #socilites a[href="/social/naver"] {
+            width: 199px;
+            height: 43px;
+            background-image: url('/images/naver_login.png');
+            background-size: 199px 43px;
         }
     </style>
 
@@ -96,6 +108,9 @@
     비와 같이, 땅을 적시는 늦은 비와 같이<br />
     우리에게 임하시리라 하니라 (호세아 6:3)
 </blockquote>
-<a href="/social/kakao">카카오로그인</a>
+<div id="socilites">
+    <a href="/social/kakao">카카오로그인</a>
+    <a href="/social/naver">네이버로그인</a>
+</div>
 </body>
 </html>

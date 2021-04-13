@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         };
-        xhr.open('PATCH', '/api/app/users/' + apps.metadata.kakaoId, true);
+        xhr.open('PATCH', '/api/app/users/' + apps.metadata.userId, true);
         xhr.setRequestHeader('X-CSRF-Token', apps.metadata.csrfToken);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         };
-        xhr.open('GET', '/api/app/users/' + apps.metadata.kakaoId);
+        xhr.open('GET', '/api/app/users/' + apps.metadata.userId);
         xhr.setRequestHeader('X-CSRF-Token', apps.metadata.csrfToken);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.send();
