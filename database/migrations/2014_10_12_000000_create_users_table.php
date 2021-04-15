@@ -15,7 +15,8 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('kakao_id');
+            $table->enum('socialite_type', ['kakao', 'naver']);
+            $table->string('socialite_uid', 255);
             $table->string('name')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();

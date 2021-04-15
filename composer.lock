@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "512320bd5f2fe380ef053ab2c12bb6d4",
+    "content-hash": "dbd0b0ec649288f0f4a61b230e5ff20a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2720,6 +2720,49 @@
                 "source": "https://github.com/SocialiteProviders/Manager/tree/4.0.1"
             },
             "time": "2020-12-01T23:09:06+00:00"
+        },
+        {
+            "name": "socialiteproviders/naver",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Naver.git",
+                "reference": "8aea1dc415c2c353eba836e5d3aa91edf884c019"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Naver/zipball/8aea1dc415c2c353eba836e5d3aa91edf884c019",
+                "reference": "8aea1dc415c2c353eba836e5d3aa91edf884c019",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-simplexml": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Naver\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Doojin So",
+                    "email": "sodoojin@gmail.com"
+                }
+            ],
+            "description": "Naver OAuth2 Provider for Laravel Socialite",
+            "support": {
+                "source": "https://github.com/SocialiteProviders/Naver/tree/4.1.0"
+            },
+            "time": "2020-12-01T23:10:59+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

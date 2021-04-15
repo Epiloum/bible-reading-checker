@@ -58,14 +58,17 @@ class SocialController extends Controller
     protected function handleProviderCallback(Request $request, string $provider)
     {
         $socialUser = Socialite::driver($provider)->user();
+        $user = User::where('socialite_type', $provider)
+            ->where('socialite_uid', $socialUser->id)
+            ->first();
 
-        if ($user = User::where('kakao_id', $socialUser->getRaw()['id'])->first()) {
+        if ($user) {
             $this->guard()->login($user, true);
 
             return $this->sendLoginResponse($request);
         }
 
-        return $this->register($request, $socialUser);
+        return $this->register($request, $provider, $socialUser);
     }
 
     /**
@@ -75,10 +78,11 @@ class SocialController extends Controller
      * @param SocialUser $socialUser
      * @return mixed
      */
-    protected function register(Request $request, SocialUser $socialUser)
+    protected function register(Request $request, string $provider, SocialUser $socialUser)
     {
         $user = new User;
-        $user->kakao_id = $socialUser->getRaw()['id'];
+        $user->socialite_type = $provider;
+        $user->socialite_uid = $socialUser->id;
         $user->name = $socialUser->getName();
         $user->email = $socialUser->getEmail();
         $user->email_verified_at = $user->freshTimestamp();
