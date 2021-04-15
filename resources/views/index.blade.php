@@ -33,7 +33,7 @@
         {
             width: 210px;
             height: 210px;
-            margin: 16% auto;
+            margin: 12% auto;
             background-color: rgba(0, 0, 0, .65);
         }
         h1 {
@@ -50,9 +50,9 @@
         blockquote {
             width: 260px;
             margin: auto;
-            padding: 30px;
+            padding: 25px;
             color: #333;
-            font-size: 12px;
+            font-size: 13px;
             text-align: center;
             line-height: 1.5em;
             letter-spacing: -0.05em;
@@ -63,7 +63,7 @@
         }
         #socilites a {
             display: inline-block;
-            margin: 6px 5px;
+            margin: 4px 5px;
             border-radius: 5px;
             background-repeat: no-repeat;
             box-shadow: 5px 5px 20px rgba(50, 20, 0, .7);
@@ -103,10 +103,8 @@
     </hgroup>
 </header>
 <blockquote>
-    그러므로 우리가 여호와를 알자 힘써 여호와를 알자<br />
-    그의 나타나심은 새벽 빛 같이 어김없나니<br />
-    비와 같이, 땅을 적시는 늦은 비와 같이<br />
-    우리에게 임하시리라 하니라 (호세아 6:3)
+    주의 말씀은 내 발에 등이요<br />
+    내 길에 빛이니이다 (시편 119:105)
 </blockquote>
 <div id="socilites">
     <a href="/social/kakao">카카오로그인</a>
