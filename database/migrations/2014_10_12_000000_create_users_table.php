@@ -18,10 +18,14 @@ class CreateUsersTable extends Migration
             $table->enum('socialite_type', ['kakao', 'naver']);
             $table->string('socialite_uid', 255);
             $table->string('name')->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
+            $table->enum('division', ['청년1부', '청년2부'])->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->index(['socialite_type', 'socialite_uid']);
         });
     }
 
