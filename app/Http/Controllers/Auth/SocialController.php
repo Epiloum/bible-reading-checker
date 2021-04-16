@@ -26,6 +26,12 @@ class SocialController extends Controller
      */
     public function execute(Request $request, string $provider)
     {
+        // 로컬 환경에서는 로그인을 통과
+        if(env('APP_ENV') == 'local')
+        {
+            return $this->handleProviderOnLocal($request, $provider);
+        }
+
         if (! array_key_exists($provider, config('services'))) {
             return $this->sendNotSupportedResponse($provider);
         }
@@ -69,6 +75,25 @@ class SocialController extends Controller
         }
 
         return $this->register($request, $provider, $socialUser);
+    }
+
+    /**
+     * 로컬환경에서는 소셜에서 인증을 받은 후의 응답을 강제로 반환
+     * users 테이블에 레코드가 없는 경우의 예외처리는 누락되어 있으므로 주의
+     *
+     * @param Request $request
+     * @param string  $provider
+     * @return RedirectResponse|Response
+     */
+    protected function handleProviderOnLocal(Request $request, string $provider)
+    {
+        $user = User::first();
+
+        if ($user) {
+            $this->guard()->login($user, true);
+
+            return $this->sendLoginResponse($request);
+        }
     }
 
     /**
