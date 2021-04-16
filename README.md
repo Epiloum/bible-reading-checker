@@ -1,62 +1,29 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 대길교회 성경읽기표
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 소개
+성경읽기표는 <a href="http://www.daegil.net">대길교회</a> 청년부에서 2021년 성경통독 캠페인을 위하여 만들어진 웹서비스입니다. 
 
-## About Laravel
+## 로컬 개발환경
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 세팅방법
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+※ 먼저 본 설명에서 "최상위 경로"라 할 때에는 본 md 파일이 위치한 디렉토리를 의미한다는 것을 우선 기재해둡니다.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+로컬 개발환경 구동을 위해서는 docker-compose 명령어를 사용 가능해야 하고, 최상위 경로에 docker-compose.override.yml, .env의 2개 파일이 있어야 합니다. 두 파일은 모두 .gitignore로 등록되어 있으므로 git으로는 받을 수 없으며, epiloum에게 별도 요청하거나 직접 구축해야 합니다.
 
-## Learning Laravel
+두 파일이 세팅이 되면, docker-compose.yml 파일이 있는 경로에서 다음과 같이 docker-compose 명령어로 로컬환경을 구동할 수 있습니다.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
+# docker-compose up -d
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+DB Table의 생성과 초기 데이터 입력은 Laravel migration과 seeder를 통해 진행합니다. 이 명령어는 구동된 Docker Container 중에서 bible-reading-php의 CLI에서 최상위 경로로 진입하여 실행해야 합니다. (설정의 변화가 없다면 보통 최상위 경로는 /var/www입니다.) 
 
-## Laravel Sponsors
+```
+# cd /var/www
+# php artisan migrate:refresh --seed
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 유의점
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+본 소스코드에는 로컬 실행시에 SNS 로그인을 우회하여, users 테이블의 첫 번째 레코드를 가져와 인증하는 로직이 담겨 있습니다. 따라서 users 테이블이 존재하지 않거나 비어있으면 로컬에서 오류가 발생합니다. 이 때는 migration과 seed를 다시 진행하여 바로잡아야 합니다.   
