@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
             $table->enum('division', ['청년1부', '청년2부'])->nullable();
+            $table->enum('manager', ['y', 'n'])->default('n');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

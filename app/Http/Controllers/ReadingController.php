@@ -53,6 +53,7 @@ class ReadingController extends Controller
                 'books' => $books,
                 'chapters' => $chapters,
                 'user_id' => auth()->user()->id,
+                'manager' => auth()->user()->manager == 'y'
             ]
         );
     }

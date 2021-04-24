@@ -1,7 +1,18 @@
-@extends('layouts/with_header')
+@extends('layouts/basis')
 
 @section('title', '성경읽기표')
 @section('headline', '성경읽기표')
+
+@section('additional_head_resource')
+    <link href="/css/reading.css" rel="stylesheet" />
+@endsection
+
+@section('header')
+    @include('layouts.header_superview', [
+        'css' => 'reading.css'
+    ])
+@endsection
+
 
 @section('contents')
     <section>

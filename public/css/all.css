@@ -23,11 +23,11 @@ header {
     z-index: 20;
 }
 header h1 {
-    height: 16px;
-    padding: 18px;
+    height: 18px;
+    padding: 17px;
     color: #333;
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 18px;
+    line-height: 18px;
     letter-spacing: -0.05em;
 }
 header #menu_left {
@@ -48,33 +48,35 @@ header #menu_right {
     padding: 10px;
     text-align: right;
 }
-header #button_nav {
+header button {
     overflow: hidden;
     width: 32px;
     height: 32px;
-    margin-left: 2px;
-    margin-top: 2px;
     border: 0;
     background-color: #fff;
-    background-image: url('/images/hamburger.png');
     background-repeat: no-repeat;
     background-size: 32px 32px;
     background-position: center center;
     font-size: 0;
     text-indent: -5000px;
 }
+header #button_nav {
+    margin-left: 2px;
+    margin-top: 2px;
+    background-image: url('/images/hamburger.png');
+}
+header #button_back {
+    margin-left: 2px;
+    margin-top: 2px;
+    background-image: url('/images/back.png');
+}
+header #button_tickets {
+    margin-right: 2px;
+    margin-top: 2px;
+    background-image: url('/images/ticket.png');
+}
 header #button_profile {
-    overflow: hidden;
-    width: 32px;
-    height: 32px;
-    border: 0;
-    background-color: #fff;
     background-image: url('/images/profile.png');
-    background-repeat: no-repeat;
-    background-size: 32px 32px;
-    background-position: center center;
-    font-size: 0;
-    text-indent: -5000px;
 }
 nav {
     display: none;

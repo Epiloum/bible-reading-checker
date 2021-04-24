@@ -26,6 +26,9 @@ apps.methods.toggleNav = function () {
 
 // Document Ready
 document.addEventListener('DOMContentLoaded', function () {
+    // Init
+    var o;
+
     // Apps object
     apps.forms['settings'] = document.getElementById('frmSettings');
 
@@ -95,29 +98,47 @@ document.addEventListener('DOMContentLoaded', function () {
     })();
 
     // Event Handler: Toggle Navigation UI
-    document.getElementById('button_nav').addEventListener('click', e => {
-        apps.methods.toggleNav();
-    });
+    if(o = document.getElementById('button_nav')) {
+        o.addEventListener('click', e => {
+            apps.methods.toggleNav();
+        });
 
-    // Event Handler: Shortcut on Navigation
-    (function () {
-        var els = document.querySelectorAll('nav dd');
+        // Event Handler: Shortcut on Navigation
+        (function () {
+            var els = document.querySelectorAll('nav dd');
 
-        for(var i=0; i<els.length; i++) {
-            let o = els[i];
-            o.addEventListener('click', e => {
-                document.getElementById(o.dataset['to']).scrollIntoView();
-                window.scrollBy(0, -1 * document.getElementsByTagName('header')[0].clientHeight);
-                apps.methods.toggleNav();
-                apps.methods.showToastMsg(o.innerText + ' 위치로 이동하였습니다.');
-            });
-        }
-    })();
+            for(var i=0; i<els.length; i++) {
+                let o = els[i];
+                o.addEventListener('click', e => {
+                    document.getElementById(o.dataset['to']).scrollIntoView();
+                    window.scrollBy(0, -1 * document.getElementsByTagName('header')[0].clientHeight);
+                    apps.methods.toggleNav();
+                    apps.methods.showToastMsg(o.innerText + ' 위치로 이동하였습니다.');
+                });
+            }
+        })();
+    }
 
     // Event Handler: Profile Setting
-    document.getElementById('button_profile').addEventListener('click', e => {
-        document.getElementById('layerSettings').style.display = 'block';
-    });
+    if(o = document.getElementById('button_profile')) {
+        o.addEventListener('click', e => {
+            document.getElementById('layerSettings').style.display = 'block';
+        });
+    }
+
+    // Event Handler: Back Button
+    if(o = document.getElementById('button_back')) {
+        o.addEventListener('click', e => {
+            history.back();
+        });
+    }
+
+    // Event Handler: Tickets
+    if(o = document.getElementById('button_tickets')) {
+        o.addEventListener('click', e => {
+            location.href = '/app/tickets';
+        });
+    }
 
     // Event Handler: Checking Read it or not
     Object.values(document.getElementsByTagName('main')[0].getElementsByTagName('button')).forEach(o => {

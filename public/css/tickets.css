@@ -1,0 +1,26 @@
+main table {
+    width: 100%;
+    border: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+    letter-spacing: -0.05em;
+}
+main table th {
+    padding-bottom: 6px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: top;
+}
+main table td {
+    border: 0;
+    padding-top: 8px;
+    font-size: 12px;
+    text-align: center;
+}
+main table th:nth-child(3),
+main table td:nth-child(3) {
+    text-align: left;
+}
