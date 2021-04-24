@@ -48,10 +48,10 @@ class Kernel extends ConsoleKernel
 
                 if ($item->chapter->book->count == $count) {
                     // 추첨권 발급처리
-                    $ticket = new \App\Models\Tickets;
-                    $ticket->book_id = $item->chapter->book_id;
-                    $ticket->user_id = $item->user_id;
-                    $ticket->save();
+                    \App\Models\Tickets::firstOrCreate([
+                        'book_id' => $item->chapter->book_id,
+                        'user_id' => $item->user_id
+                    ]);
                 }
             });
         })->everyMinute();
