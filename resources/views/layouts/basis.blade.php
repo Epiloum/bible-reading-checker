@@ -14,7 +14,6 @@
     <title>@yield('title') - 대길교회 청년부</title>
     <script src="/js/all.js" type="text/javascript"></script>
     <link href="/css/all.css" rel="stylesheet" />
-    <link href="/css/reading.css" rel="stylesheet" />
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NNV09EZZK"></script>
@@ -25,6 +24,8 @@
 
         gtag('config', 'G-0NNV09EZZK');
     </script>
+
+    @yield('additional_head_resource')
 </head>
 <body>
 <nav>
@@ -43,15 +44,8 @@
         <dd data-to="book66">예언서</dd>
     </dl>
 </nav>
-<header>
-    <h1>@yield('headline')</h1>
-    <div id="menu_left">
-        <button id="button_nav">메뉴</button>
-    </div>
-    <div id="menu_right">
-        <button id="button_profile">프로필 수정</button>
-    </div>
-</header>
+@section('header')
+@show
 <main>
     @section('contents')
     @show
