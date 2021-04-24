@@ -13,6 +13,11 @@ class TicketController extends Controller
         // Getting tickets of the logged user
         if(auth()->user()->manager == 'y') {
             $tickets = Ticket::with(['user', 'book'])->get();
+
+            $tickets = $tickets->groupBy(function ($item) {
+                $month = Carbon::createFromFormat('Y-m-d H:i:s', $item->created_at)->month;
+                return $item->user_id . '_' . $month;
+            });
         } else {
             $tickets = Ticket::with(['user', 'book'])
                 ->where('user_id', auth()->user()->id)
@@ -21,13 +26,16 @@ class TicketController extends Controller
 
         // Postprocessing data
         $tickets = $tickets->map(function ($item, $key) {
+            $cnt = $item->count();
+            $date = $item->max('created_at');
+
             return collect([
-                'no' => $item->id,
-                'division' => $item->user->division,
-                'mobile' => substr($item->user->mobile, -4),
-                'book' => $item->book->title,
-                'date' => Carbon::createFromFormat('Y-m-d H:i:s', $item->created_at)->format('Y/m/d'),
-                'month' => Carbon::createFromFormat('Y-m-d H:i:s', $item->created_at)->month
+                'no' => $item[0]->id,
+                'division' => $item[0]->user->division,
+                'mobile' => substr($item[0]->user->mobile, -4),
+                'book' => $item[0]->book->title . ($cnt > '1'? ' (외 ' . ($cnt - 1) . '권)': ''),
+                'date' => Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y/m/d'),
+                'month' => Carbon::createFromFormat('Y-m-d H:i:s', $date)->month
             ]);
         });
 

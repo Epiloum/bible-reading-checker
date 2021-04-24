@@ -18,7 +18,7 @@
                 <col width="25px" />
                 <col width="100px" />
                 <col width="*" />
-                <col width="70px" />
+                <col width="60px" />
                 <col width="40px" />
             </colgroup>
             <thead>
