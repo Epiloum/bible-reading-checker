@@ -48,7 +48,7 @@ class Kernel extends ConsoleKernel
 
                 if ($item->chapter->book->count == $count) {
                     // 추첨권 발급처리
-                    \App\Models\Tickets::firstOrCreate([
+                    \App\Models\Ticket::firstOrCreate([
                         'book_id' => $item->chapter->book_id,
                         'user_id' => $item->user_id
                     ]);
