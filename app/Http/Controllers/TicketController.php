@@ -12,7 +12,9 @@ class TicketController extends Controller
     {
         // Getting tickets of the logged user
         if(auth()->user()->manager == 'y') {
-            $tickets = Ticket::with(['user', 'book'])->get();
+            $tickets = Ticket::with(['user', 'book'])
+                ->where('created_at', '>=', now()->subDays(10)->firstOfMonth())
+                ->get();
 
             $tickets = $tickets->groupBy(function ($item) {
                 $month = Carbon::createFromFormat('Y-m-d H:i:s', $item->created_at)->month;
@@ -37,7 +39,7 @@ class TicketController extends Controller
                 'date' => Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y/m/d'),
                 'month' => Carbon::createFromFormat('Y-m-d H:i:s', $date)->month
             ]);
-        });
+        })->sortBy('date');
 
         // Load View
         return view(
