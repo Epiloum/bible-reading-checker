@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\Ticket;
 
 class TicketController extends Controller
@@ -14,6 +14,9 @@ class TicketController extends Controller
         if(auth()->user()->manager == 'y') {
             $tickets = Ticket::with(['user', 'book'])
                 ->where('created_at', '>=', now()->subDays(10)->firstOfMonth())
+                ->whereHas('user', function (Builder $query) {
+                    $query->where('has_ticket', 'y');
+                })
                 ->get();
 
             $tickets = $tickets->groupBy(function ($item) {
