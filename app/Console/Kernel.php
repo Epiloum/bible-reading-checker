@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Models\Read;
+use App\Models\Ticket;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -19,7 +21,7 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
@@ -30,7 +32,7 @@ class Kernel extends ConsoleKernel
             $periodMinutes = 2;
 
             // 최근 5분간 생성된 읽기체크 내역을 쿼리
-            $targets = \App\Models\Read::with('chapter', 'chapter.book')
+            $targets = Read::with('chapter', 'chapter.book')
                 ->whereBetween('created_at', [now()->subMinutes($periodMinutes), now()])
                 ->get();
 
@@ -41,14 +43,14 @@ class Kernel extends ConsoleKernel
 
             // 읽기체크된 각 권마다 사용자가 모든 장을 다 읽었는지 확인
             $targets->each(function ($item) {
-                $count = \App\Models\Read::where('user_id', $item->user_id)
+                $count = Read::where('user_id', $item->user_id)
                     ->whereHas('chapter', function ($q) use ($item) {
                         $q->where('book_id', $item->chapter->book_id);
                     })->count();
 
                 if ($item->chapter->book->count == $count) {
                     // 추첨권 발급처리
-                    \App\Models\Ticket::firstOrCreate([
+                    Ticket::firstOrCreate([
                         'book_id' => $item->chapter->book_id,
                         'user_id' => $item->user_id
                     ]);
