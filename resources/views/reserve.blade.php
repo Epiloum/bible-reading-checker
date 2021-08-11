@@ -2,7 +2,7 @@
 <html lang="ko" class="os_window">
 <head>
     <meta charset="utf-8"/>
-    <title>Daum</title>
+    <title>청년부 현장예배 예약</title>
 </head>
 <body>
 <div style="text-align:center; line-height:1.7em; margin-top:120px">
