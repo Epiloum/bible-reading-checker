@@ -6,7 +6,7 @@
     <title>청년부 현장예배 예약</title>
     <script>
         <?php
-        if (date('YmdH') >= 2021081413) {
+        if (date('YmdH') >= 2021082113) {
             echo 'location.href = "http://naver.me/FjoQCYWo";';
         }
         ?>
@@ -16,8 +16,8 @@
 <body>
 <div style="text-align:center; line-height:1.7em; margin-top:120px">
     <img src="http://daegil.net/images/logo.png" alt="대길교회" width="270" height="65"><br /><br />
-    <b>8/15(주일) 현장예배 사전신청</b><br />
-    8/14(토) 오후 1시에 시작합니다!
+    <b>8/22(주일) 현장예배 사전신청</b><br />
+    8/21(토) 오후 1시에 시작합니다!
 </div>
 </body>
 </html>
