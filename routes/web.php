@@ -47,3 +47,8 @@ else
 {
     Route::middleware('auth')->prefix('app')->group($routeApp);
 }
+
+// Reserve
+Route::get('/reserve', function () {
+    return view('reserve');
+});
