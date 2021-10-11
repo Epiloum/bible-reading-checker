@@ -52,3 +52,8 @@ else
 Route::get('/reserve', function () {
     return view('reserve');
 });
+
+// Landing
+Route::get('/who-is-jesus', function () {
+    return view('landing');
+});
