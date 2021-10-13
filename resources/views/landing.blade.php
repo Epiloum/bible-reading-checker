@@ -61,9 +61,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="top02">
            <div class="top_img">
 			<div class="top_video">
-				<video muted autoplay loop>
-					<source src="/static/video/letter.mp4" type="video/mp4">
-				</video>
+                <img src="/static/img/letter.gif"/>
 			</div>
             <div class="shade"></div>
          </div>
@@ -83,10 +81,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       <div class="con02">
 		 <img class="con02-background" src="/static/img/con02_back.png" />
-		 <div class="con02-text01 scroll-state">그런데 사람은 하나님 말씀에</div>
-		 <div class="con02-text02 scroll-state">불순종하는 죄를 지어서 </div>
-		 <div class="con02-text03 scroll-state">하나님과 멀어지게 되었습니다. </div>
-		 <div class="con02-text04 scroll-state">지금의 모습이 되었지요 </div>
+		 <div class="con02-text">
+			<ul>
+				 <li><div class="con02-text01 scroll-state">그런데 사람은 하나님 말씀에</div></li>
+				 <li><div class="con02-text02 scroll-state">불순종하는 죄를 지어서 </div></li>
+				 <li><div class="con02-text03 scroll-state">하나님과 멀어지게 되었습니다. </div></li>
+				 <li><div class="con02-text04 scroll-state">지금의 모습이 되었지요 </div></li>
+			</ul>
+		</div>	
 		 <img class="con02-bible-text" src="/static/img/bible_text02.png" />
 		 <div class="con02-block"></div>
 	  </div>
@@ -131,9 +133,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="con05">
            <div class="con05_img">
 			<div class="con05_video">
-				<video muted autoplay loop>
-					<source src="/static/video/ink.mp4" type="video/mp4">
-				</video>
+                <img src = "/static/img/ink.gif"/>
 			</div>
             <div class="shade"></div>
          </div>
@@ -272,7 +272,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
 		// 하단 버튼 show
 		$(window).scroll(function () {
-			if ($(this).scrollTop() > $(".con06").offset().top) {
+			if ($(this).scrollTop() > $(".con06").offset().top && $(this).scrollTop() < $(".info-sns-swipe").offset().top) {
 				$('.top_btn_box').css("display","block");
 			} else {
 				$('.top_btn_box').css("display","none");
