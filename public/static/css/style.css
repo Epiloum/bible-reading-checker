@@ -79,6 +79,7 @@ a:visited {text-decoration:none; color:#fff;}
 /*   top02 start   */
 .top02						{position:relative; width:100%; height:580px; overflow:hidden;  background:#ffffff; }
 .top_video					{width:100%;  height:580px; overflow: hidden;margin: 0px auto; position: relative; }
+.top_video img				{height:100%;transform: translate(-50%,0%)}
 video						{height:100%;transform: translate(-50%,0%)}
 .shade {
   z-index: 10;
@@ -121,10 +122,10 @@ img.con01-bible-text	{width: 50%;  display:block;text-align:center; left:25%; ma
 /*   con02 start   */
 .con02					{width:100%; height:720px; background-color: #95d031; text-align:center;position:relative;margin-top: -1px;}
 .con02-background		{width:100%;height:100%;}
-.con02-text01			{opacity:0; width: 100%;padding-top:300px; text-align: center; font-size: 20px; color: white; font-family:'Noto Sans KR', sans-serif; font-weight:500;position:absolute;top:0;}
-.con02-text02			{opacity:0; width: 100%;text-align: center; font-size: 20px; color: white; font-family:'Noto Sans KR', sans-serif; font-weight:500;position:absolute;top:332px;}
-.con02-text03			{opacity:0; width: 100%;text-align: center; font-size: 20px; color: white; font-family:'Noto Sans KR', sans-serif; font-weight:500;position:absolute;top:364px;}
-.con02-text04			{opacity:0; width: 100%;text-align: center; font-size: 20px; color: white; font-family:'Noto Sans KR', sans-serif; font-weight:500;position:absolute;top:476px;}
+.con02-text01			{width: 100%;padding-top:300px; text-align: center; font-size: 20px; color: white; font-family:'Noto Sans KR', sans-serif; font-weight:500;position:absolute;top:0;}
+.con02-text02			{width: 100%;text-align: center; font-size: 20px; color: white; font-family:'Noto Sans KR', sans-serif; font-weight:500;position:absolute;top:332px;}
+.con02-text03			{width: 100%;text-align: center; font-size: 20px; color: white; font-family:'Noto Sans KR', sans-serif; font-weight:500;position:absolute;top:364px;}
+.con02-text04			{width: 100%;text-align: center; font-size: 20px; color: white; font-family:'Noto Sans KR', sans-serif; font-weight:500;position:absolute;top:476px;}
 img.con02-bible-text	{width: 50%;  display:block;text-align:center; left:25%; margin:30px 0 30px 0; position:absolute;bottom: 0%;}
 .con02-block			{background-color:black; padding-bottom:100px; margin-top: -1px;}
 /*
@@ -203,6 +204,7 @@ img.con03-bible-text	{width: 50%;  display:block;text-align:center; left:25%; bo
 /*   con05 start   */
 .con05					{width:100%; background:#ffffff; text-align:center;position:relative;}
 .con05_video			{width:100%;  height:580px; overflow: hidden;margin: 0px auto; position: relative; }
+.con05 .con05_video img	{height: 100%;transform: translate(-20%,0%)} 
 .con05 video			{transform: translate(-20%,0%)} 
 img.con05-bible-text	{width: 75%;  display:block;text-align:center; left:10%; bottom:0%; margin:30px 0 30px 0; position:absolute;}
 .con05-text				{opacity:0;margin-top: -24px; text-align: center; font-size: 20px; color: white; font-family:'Noto Sans KR', sans-serif; font-weight:500; position: absolute; top: 50%; width: 100%;z-index:50;}
@@ -476,7 +478,31 @@ img.con06-bible-text	{width: 75%;  display:block;text-align:center; left:12%; bo
     -webkit-animation: fade-in-up 1s ease 0s forwards;
     -ms-animation: fade-in-up 1s ease 0s forwards;
 }
-
+.con02-text li div{opacity : 0;}
+.con02-text li div.active{
+	animation : fade-in-up 1s ease 0s forwards;
+	-webkit-animation : fade-in-up 1s ease 0s forwards;
+	-ms-animation : fade-in-up 1s ease 0s forwards;
+}
+.con02-text li div:nth-child(2){
+	animation : fade-in-up 1s ease 0s forwards;
+	-webkit-animation : fade-in-up 1s ease 0s forwards;
+	-ms-animation : fade-in-up 1s ease 0s forwards;
+	animation-delay:.6s;
+}
+.con02-text li div:nth-child(3){
+	animation : fade-in-up 1s ease 0s forwards;
+	-webkit-animation : fade-in-up 1s ease 0s forwards;
+	-ms-animation : fade-in-up 1s ease 0s forwards;
+	animation-delay:.6s;
+}
+.con02-text li div:nth-child(4){
+	animation : fade-in-up 2s ease 0s forwards;
+	-webkit-animation : fade-in-up 2s ease 0s forwards;
+	-ms-animation : fade-in-up 2s ease 0s forwards;
+	animation-delay:.6s;
+}
+/*
 .con02-text01.active {
 	animation: fade-in-up 1s ease 0s forwards;
     -webkit-animation: fade-in-up 1s ease 0s forwards;
@@ -500,6 +526,8 @@ img.con06-bible-text	{width: 75%;  display:block;text-align:center; left:12%; bo
     -ms-animation: fade-in-up 2s ease 0s forwards;
 	animation-delay: 1.2s;	
 }
+*/
+
 .text01.active {
 	animation: fade-in-left 1s ease 0s forwards;
     -webkit-animation: fade-in-left 1s ease 0s forwards;
@@ -557,9 +585,9 @@ img.con06-bible-text	{width: 75%;  display:block;text-align:center; left:12%; bo
     -ms-animation: fade-in-up 1.5s ease 0s forwards;
 }
 .con06-text02.active {
-	animation: fade-in-up 2s ease 0s forwards;
-    -webkit-animation: fade-in-up 2s ease 0s forwards;
-    -ms-animation: fade-in-up 2s ease 0s forwards;
+	animation: fade-in-up 1s ease 0s forwards;
+    -webkit-animation: fade-in-up 1s ease 0s forwards;
+    -ms-animation: fade-in-up 1s ease 0s forwards;
 	animation-delay: .5s;	
 }
 .img-mid-orangetxt li{opacity : 0;}
