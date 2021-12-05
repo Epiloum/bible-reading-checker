@@ -33,6 +33,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJR7M5C"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->   
    <div class="wrap">
 	  <div class="top_btn_box" style="display:none;">
 		<div class="top_btn" style="cursor:pointer;"><p class="top_btn_txt">당신을 위해 기도할게요</p></div>
