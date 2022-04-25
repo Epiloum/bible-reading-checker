@@ -31,7 +31,7 @@
         }
         ol li {
             width: 60%;
-            min-width: 360px;
+            min-width: 320px;
             max-width: 540px;
             height: 18px;
             margin: 8px auto;
