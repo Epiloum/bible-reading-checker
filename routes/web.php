@@ -57,3 +57,8 @@ Route::get('/reserve', function () {
 Route::get('/who-is-jesus', function () {
     return view('landing');
 });
+
+// One Day Worship
+Route::get('/one-day-worship', function () {
+    return view('oneDayWorship');
+});
