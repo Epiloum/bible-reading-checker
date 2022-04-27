@@ -94,8 +94,8 @@
         </li>
         <li>
             <h3>십자가</h3>
-            <a href="https://www.youtube.com/watch?v=rJi0wNooA2Q" target="_blank">영상</a>
-            <a href="https://mblogthumb-phinf.pstatic.net/20160217_105/worship6890_1455699703351YjOqJ_JPEG/%25EC%258B%25AD%25EC%259E%2590%25EA%25B0%2580_-_%25EC%25A0%259C%25EC%259D%25B4%25EC%2596%25B4%25EC%258A%25A4_1.jpg?type=w800" target="_blank">악보</a>
+            <a href="https://youtu.be/qePQwG6WZ9s" target="_blank">영상</a>
+            <a href="#" target="_blank">악보</a>
         </li>
         <li>
             <h3>할렐루야 살아계신 주</h3>
