@@ -108,7 +108,7 @@
 </blockquote>
 <div id="socilites">
     <a href="/social/kakao">카카오로그인</a>
-    <a href="/social/naver">네이버로그인</a>
+    <!--<a href="/social/naver">네이버로그인</a>-->
 </div>
 </body>
 </html>
