@@ -9,7 +9,7 @@ services:
       args:
         user: app
         uid: 1000
-    image: php:7.4-fpm
+    image: php:8.0-fpm
     container_name: bible-reading-php
     restart: unless-stopped
     tty: true
