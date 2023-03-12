@@ -175,4 +175,22 @@ document.addEventListener('DOMContentLoaded', function () {
             xhr.send(body);
         });
     });
+
+    document.querySelector('#btn_init button').addEventListener('click', function () {
+        if (confirm('모든 성경읽기 표시가 지워집니다. 초기화를 진행하겠습니까?')) {
+            let xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 204) {
+                        alert('초기화가 완료되었습니다.');
+                        location.reload();
+                    }
+                }
+            };
+            xhr.open('DELETE', '/api/app/reads/init', true);
+            xhr.setRequestHeader('X-CSRF-Token', apps.metadata.csrfToken);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhr.send();
+        }
+    })
 });

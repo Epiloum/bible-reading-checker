@@ -47,6 +47,10 @@
             @endforeach
         </table>
     </section>
+    <section id="btn_init">
+        <label>모든 읽기표시 지우기</label>
+        <button>초기화</button>
+    </section>
 @endsection
 
 @section('layers')

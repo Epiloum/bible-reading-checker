@@ -81,3 +81,20 @@ main table tr:nth-of-type(6n+6) button[data-read=y] {
     background-color: #cc77dd;
 }
 */
+main #btn_init label {
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 37px;
+}
+main #btn_init button {
+    float: right;
+    padding: 10px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #E67E22;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    -webkit-appearance: none;
+    -webkit-border-radius: 4px;
+}

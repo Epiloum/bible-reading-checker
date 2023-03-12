@@ -104,4 +104,14 @@ class ReadController extends Controller
             ->where('chapter_id', $id)
             ->delete();
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function init(Request $request)
+    {
+        Read::where('user_id', $request->user()->id)->delete();
+        return response()->noContent();
+    }
 }
