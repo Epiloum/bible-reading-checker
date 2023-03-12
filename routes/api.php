@@ -21,29 +21,15 @@ Route::middleware('auth:web')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-$routeApi = function () {
-    Route::apiResource('reads', ReadController::class)->only(
-        [
-            'index',
-            'show',
-            'store',
-            'destroy'
-        ]
-    );
+$route = (env('APP_ENV') == 'local')
+    ? Route::prefix('app')
+    : Route::middleware('auth:web')->prefix('app');
 
-    Route::apiResource('users', UserController::class)->only(
-        [
-            'show',
-            'update'
-        ]
-    );
-};
+$route->group(function () {
+    Route::prefix('reads')->group(function () {
+        Route::apiResource('', ReadController::class)->only(['index', 'show', 'store', 'destroy']);
+        Route::delete('init', [ReadController::class, 'init']);
+    });
 
-if(env('APP_ENV') == 'local')
-{
-    Route::prefix('app')->group($routeApi);
-}
-else
-{
-    Route::middleware('auth:web')->prefix('app')->group($routeApi);
-}
+    Route::apiResource('users', UserController::class)->only(['show', 'update']);
+});
