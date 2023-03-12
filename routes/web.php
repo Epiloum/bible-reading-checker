@@ -16,49 +16,53 @@ use App\Http\Controllers\TicketController;
 |
 */
 
-// Index
+/*
+|--------------------------------------------------------------------------
+| Index
+|--------------------------------------------------------------------------
+*/
 Route::get('/', [GeneralController::class, 'index'])->name('index');
-
-// Social Login
-Route::get('social/req', [GeneralController::class, 'reqLogin'])->name('social.request');
-
-Route::get('social/{provider}', [
-    'as' => 'social.login',
-    'uses' => 'App\Http\Controllers\Auth\SocialController@execute',
-]);
-
 Route::redirect('home', 'app/reading');
 
-// App
-$routeApp = function () {
+
+/*
+|--------------------------------------------------------------------------
+| Social Login
+|--------------------------------------------------------------------------
+*/
+Route::prefix('social')->group(function(){
+    Route::get('req', [GeneralController::class, 'reqLogin'])->name('social.request');
+    Route::get('{provider}', [
+        'as' => 'social.login',
+        'uses' => 'App\Http\Controllers\Auth\SocialController@execute',
+    ]);
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| App
+|--------------------------------------------------------------------------
+*/
+$routeApp = (env('APP_ENV') == 'local')?
+    Route::prefix('app'):
+    Route::middleware('auth')->prefix('app');
+
+$routeApp->group(function () {
     // Entrance
     Route::redirect('/', 'app/reading');
 
     // Bible Reading Table
     Route::get('reading', [ReadingController::class, 'index']);
     Route::get('tickets', [TicketController::class, 'index']);
-};
-
-if(env('APP_ENV') == 'local')
-{
-    Route::prefix('app')->group($routeApp);
-}
-else
-{
-    Route::middleware('auth')->prefix('app')->group($routeApp);
-}
-
-// Reserve
-Route::get('/reserve', function () {
-    return view('reserve');
 });
 
-// Landing
-Route::get('/who-is-jesus', function () {
-    return view('landing');
-});
 
-// One Day Worship
-Route::get('/one-day-worship', function () {
-    return view('oneDayWorship');
-});
+/*
+|--------------------------------------------------------------------------
+| Etc
+|--------------------------------------------------------------------------
+*/
+Route::get('/reserve', function () { return view('reserve'); });
+Route::get('/who-is-jesus', function () { return view('landing');});
+Route::get('/one-day-worship', function () { return view('oneDayWorship'); });
