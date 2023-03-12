@@ -122,6 +122,7 @@ main {
     text-align: left;
 }
 main section {
+    overflow: hidden;
     margin-bottom: 20px;
     padding: 16px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
