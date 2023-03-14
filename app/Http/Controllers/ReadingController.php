@@ -49,7 +49,10 @@ class ReadingController extends Controller
         }
 
         $read_count = DB::selectOne("
-            SELECT count(DISTINCT(chapter_id)) AS cnt FROM `reads` WHERE user_id = {$auth_user_id}
+            SELECT count(DISTINCT(chapter_id)) AS cnt FROM `reads`
+            WHERE
+                user_id = {$auth_user_id}
+                AND deleted_at IS NULL
         ")->cnt;
 
         $targetDate = Carbon::parse(auth()->user()->target_date ?? date('Y-12-31'));
