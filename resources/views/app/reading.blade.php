@@ -15,6 +15,16 @@
 
 
 @section('contents')
+    <section id="stats">
+        <canvas id="canvas_read_count" width="80" height="80" data-read-count="{{ $read_count }}"></canvas>
+        <div>
+            <p>
+                <span id="stat_count"></span>
+                <span id="stat_rate"></span>
+            </p>
+            <h3>목표기간 {{ $target_date }}까지 하루에 {{ ceil((1189 - $read_count) / $remain_days) }}장씩</h3>
+        </div>
+    </section>
     <section>
         <h2>구약성경</h2>
         <blockquote>모세가 그 피를 가지고 백성에게 뿌리며 이르되 이는 여호와께서 이 모든 말씀에 대하여 너희와 세우신 언약의 피니라 (출애굽기 24:8)</blockquote>

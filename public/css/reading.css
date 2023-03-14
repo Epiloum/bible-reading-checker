@@ -98,3 +98,29 @@ main #btn_init button {
     -webkit-appearance: none;
     -webkit-border-radius: 4px;
 }
+main #stats {}
+main #stats canvas {
+    float: left;
+    margin-right: 15px;
+}
+main #stats h3 {
+    margin-top: 3px;
+    color: #888;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: -0.02em;
+}
+main #stats #stat_count {
+    color: #333;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+main #stats #stat_rate {
+    color: #888;
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: -0.03em;
+    word-spacing: -0.08em;
+
+}

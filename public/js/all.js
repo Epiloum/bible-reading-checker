@@ -24,6 +24,49 @@ apps.methods.toggleNav = function () {
     o.className = (o.className == 'show')? '': 'show';
 }
 
+apps.methods.drawPieGraph = function (canvas, data) {
+    const ctx = canvas.getContext('2d');
+
+    // calculate total value of data
+    const total = data.reduce((acc, value) => acc + value);
+
+    // set the center of the pie chart
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+
+    // set the radius of the pie chart
+    const radius = Math.min(centerX, centerY) * 0.98;
+
+    // define starting and ending angles for each wedge
+    let startAngle = Math.PI / -2;
+    let endAngle = 0;
+
+    // loop through the data and draw each wedge
+    let ord = 0;
+    let colors = ['#E74C3C', '#EEEEEE'];
+
+    data.forEach((value) => {
+        // calculate the percentage of this wedge
+        const percentage = value / total;
+
+        // calculate the ending angle for this wedge
+        endAngle = startAngle + percentage * Math.PI * 2;
+
+        // draw the wedge
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+        ctx.closePath();
+
+        // generate a random color for this wedge
+        ctx.fillStyle = colors[ord++];
+        ctx.fill();
+
+        // update the starting angle for the next wedge
+        startAngle = endAngle;
+    });
+}
+
 // Document Ready
 document.addEventListener('DOMContentLoaded', function () {
     // Init
@@ -41,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var body = 'division=' + encodeURIComponent(this.division.value) +
             '&name=' + encodeURIComponent(this.name.value) +
             '&mobile=' + encodeURIComponent(this.mobile.value) +
+            '&target_date=' + encodeURIComponent(this.target_date.value) +
             '&_token=' + encodeURIComponent(apps.metadata.csrfToken);
 
         var xhr = new XMLHttpRequest()
@@ -82,6 +126,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         document.querySelector('#frmSettings input[name=mobile]').value = user.data.mobile;
                     }
 
+                    if(user.data.target_date) {
+                        document.querySelector('#frmSettings input[name=target_date]').value = user.data.target_date;
+                    }
+
                     // Show layer if there are empty info.
                     if (!user.data.name || !user.data.mobile || !user.data.division) {
                         document.getElementById('layerSettings').style.display = 'block';
@@ -95,6 +143,16 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.setRequestHeader('X-CSRF-Token', apps.metadata.csrfToken);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.send();
+    })();
+
+    // Draw a pie graph for count reading
+    (function() {
+        let canvas = document.getElementById('canvas_read_count');
+        let count = parseInt(canvas.dataset.readCount, 10);
+
+        apps.methods.drawPieGraph(canvas, [count, 1189 - count])
+        document.getElementById('stat_count').innerHTML = count + '장 완료';
+        document.getElementById('stat_rate').innerHTML = '(' + (Math.floor(count / 1189 * 10000) / 100) + '%)';
     })();
 
     // Event Handler: Toggle Navigation UI

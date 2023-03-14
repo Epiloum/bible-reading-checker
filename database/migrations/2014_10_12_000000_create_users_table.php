@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('nick')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
+            $table->date('target_date')->nullable();
             $table->enum('division', ['청년1부', '청년2부'])->nullable();
             $table->enum('manager', ['y', 'n'])->default('n');
             $table->enum('has_ticket', ['y', 'n'])->default('y');
