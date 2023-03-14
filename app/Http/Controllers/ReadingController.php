@@ -57,7 +57,7 @@ class ReadingController extends Controller
 
         $targetDate = Carbon::parse(auth()->user()->target_date ?? date('Y-12-31'));
         $currentDate = Carbon::now();
-        $remainingDays = $currentDate->diffInDays($targetDate);
+        $remainingDays = max(1, $currentDate->diffInDays($targetDate));
 
         return view(
             'app/reading',
