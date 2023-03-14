@@ -22,7 +22,7 @@
                 <span id="stat_count"></span>
                 <span id="stat_rate"></span>
             </p>
-            <h3>목표기간 {{ $target_date }}까지 하루에 {{ ceil((1189 - $read_count) / $remain_days) }}장씩</h3>
+            <h3>목표기간 {{ $target_date }}까지<br />하루에 {{ ceil((1189 - $read_count) / $remain_days) }}장씩</h3>
         </div>
     </section>
     <section>
