@@ -11,6 +11,7 @@
                 <input type="text" name="name" placeholder="이름을 입력해주세요" />
             </li>
             <li><input type="text" name="mobile" placeholder="휴대전화 번호를 입력해주세요" /></li>
+            <li><input type="date" name="target_date" placeholder="1독 목표일을 선택해주세요" /></li>
         </ul>
         <div>
             <input type="submit" value="저장하기" />

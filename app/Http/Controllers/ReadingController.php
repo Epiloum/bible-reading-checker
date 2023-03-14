@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 //use App\Models\Book;
@@ -47,13 +48,24 @@ class ReadingController extends Controller
             ];
         }
 
+        $read_count = DB::selectOne("
+            SELECT count(DISTINCT(chapter_id)) AS cnt FROM `reads` WHERE user_id = {$auth_user_id}
+        ")->cnt;
+
+        $targetDate = Carbon::parse(auth()->user()->target_date ?? date('Y-12-31'));
+        $currentDate = Carbon::now();
+        $remainingDays = $currentDate->diffInDays($targetDate);
+
         return view(
             'app/reading',
             [
                 'books' => $books,
                 'chapters' => $chapters,
                 'user_id' => auth()->user()->id,
-                'manager' => auth()->user()->manager == 'y'
+                'manager' => auth()->user()->manager == 'y',
+                'read_count' => $read_count,
+                'target_date' => $targetDate->format('Y/m/d'),
+                'remain_days' => $remainingDays
             ]
         );
     }

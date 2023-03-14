@@ -189,7 +189,8 @@ main section {
     vertical-align: -2px;
     letter-spacing: -0.05em;
 }
-#layerSettings form input[type=text] {
+#layerSettings form input[type=text],
+#layerSettings form input[type=date] {
     clear: both;
     appearance: none;
     width: 100%;

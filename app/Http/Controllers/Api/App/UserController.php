@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Api\App;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -21,8 +24,8 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -33,7 +36,7 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(int $user_id, Request $request)
     {
@@ -48,14 +51,14 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param int $user_id
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function update(int $user_id, Request $request)
+    public function update(int $user_id, Request $request): JsonResponse
     {
         if ($user_id != $request->user()->id) {
-            return response('', 403);
+            return response()->json([], 403);
         }
 
         $user = User::where('id', $user_id)->firstOrFail();
@@ -68,6 +71,7 @@ class UserController extends Controller
 
         $user->name = $request->input('name');
         $user->mobile = $request->input('mobile');
+        $user->target_date = $request->input('target_date', Carbon::now()->format('Y-12-31'));
         $user->division = $request->input('division');
         $user->save();
 
@@ -77,8 +81,8 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return Response
      */
     public function destroy(User $user)
     {
